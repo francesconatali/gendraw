@@ -1,9 +1,9 @@
 # Gen Draw
-Generate img2img _(inpainting)_ images via StableHorde API.
+Developed within a single day in Vanilla JS, Gen Draw enables the creation of img2img (inpainting) images using the StableHorde API.
 
-Coded in Vanilla JS, Gen Draw is a one-day project, started in the morning and completed by the evening _(and I had to dedicate a meaningful amount of time to getting to know StableHorde APIs and all the many parameters to fine-tune the image generation)_.
+StableHorde is a crowdsourced distributed server, allowing people to create images with Stable Diffusion, a powerful deep learning model.
 
-An app like this can lend itself to be expanded in all directions, implementing all sorts of fancy features. But for the time being, it is simple and minimal.
+For a one-day project, I'm very happy with the results and it has been great fun to develop. I hope you'll enjoy drawing, entering a prompt and seeing what the AI creates!
 
 ## Try it live
 👉 [https://francesconatali.com/personalprojects/gendraw/](https://francesconatali.com/personalprojects/gendraw/) 
