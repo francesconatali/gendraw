@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Francesco Natali" />
+    <meta name="website" content="https://francesconatali.com" />
+    <meta name="description" content="Gen Draw" />
+    <title>Gen Draw</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="header">
+      <h1>Gen Draw</h1>
+    </div>
+    <div id="container">
+      <div id="generated-image">
+        <!-- The generated image will be displayed here -->
+      </div>
+      <div id="drawing-area">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+    <div id="footer">
+      <input
+        type="text"
+        id="text-prompt"
+        placeholder="Enter your prompt here"
+      />
+      <button id="submit">Generate Image</button>
+      <button id="reset">Reset</button>
+      <div id="status-message">&nbsp;</div>
+      <p>
+        Coded by
+        <a
+          target="_blank"
+          alt="Francesco website"
+          href="https://francesconatali.com"
+          >Francesco</a
+        >
+        - Source on
+        <a
+          target="_blank"
+          alt="GitHub website"
+          href="https://francesconatali.com"
+          >GitHub</a
+        >
+        - Powered by
+        <a
+          target="_blank"
+          alt="StableHorde website"
+          href="https://stablehorde.net"
+          >StableHorde</a
+        >
+      </p>
+    </div>
+    <script src="js/drawing.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/stablehordeAPI.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>
+    <script>
+      VANTA.TRUNK({
+        el: "body",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0x8e4598,
+        backgroundColor: 0xe2e2e2,
+        chaos: 1.5,
+      });
+    </script>
+  </body>
+</html>
