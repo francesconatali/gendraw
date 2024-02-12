@@ -6,7 +6,7 @@ Coded in Vanilla JS, Gen Draw is a one-day project, started in the morning and c
 An app like this can lend itself to be expanded in all directions, implementing all sorts of fancy features. But for the time being, it is simple and minimal.
 
 ## Try it live
-👉 [https://francesconatali.com/personalprojects/gendraw/](url)
+👉 [https://francesconatali.com/personalprojects/gendraw/](https://francesconatali.com/personalprojects/gendraw/) 
 
 ## Screenshots
 <img width="400" alt="gendraw_duck_drawing" src="https://github.com/francesconatali/gendraw/assets/34441930/51004d36-feaf-4273-8427-5581494be72e">
