@@ -18,7 +18,7 @@ _And this is how it looked like in the morning, still a lot to do!_<br>
 <img width="400" alt="screenshot-v01" src="https://github.com/francesconatali/gendraw/assets/34441930/fbb05f29-eb94-454b-9cef-10b8d6bf4e29">
 
 ## StableHorde API
-Alongside coding and UI, I also had to spend some time getting to know how the [StableHorde API](https://stablehorde.net/api/), as well as the meaning of the many parameters required when submitting an initial request. Inside [stablehordeAPI.js](https://github.com/francesconatali/gendraw/blob/main/js/stablehordeAPI.js) I annotated each parameter with comments, giving you a head-start if you wish to fine-tune the results to your liking.
+Alongside coding and UI, I also had to spend some time getting to know the [StableHorde API](https://stablehorde.net/api/), as well as the meaning of the many parameters required when submitting an initial request. Inside [stablehordeAPI.js](https://github.com/francesconatali/gendraw/blob/main/js/stablehordeAPI.js) I annotated each parameter with comments, giving you a head-start if you wish to fine-tune the results to your liking.
 
 Whilst StableHorde is a great free public service, it does come with its limitations: 
 
@@ -33,6 +33,6 @@ While generating an image starting from another image is often simply called 'im
 - Inpainting: Fills in missing or removed parts of an image based on the surrounding context.
 - Outpainting: Expands the edges of an image to create a larger canvas, continuing the original image's style and content.
 
-In the context of Gen Draw, due to the minimalistic and 'sketchy' nature of an image drawn on an HTML canvas, I opted for "Inpainting". You can see this on line 24 in stablehordeAPI.js:  `source_processing: "inpainting"`.
+In the context of Gen Draw, due to the minimalistic and 'sketchy' nature of an image drawn on HTML canvas, I opted for "Inpainting". You can see this on line 24 in stablehordeAPI.js:  `source_processing: "inpainting"`.
 
 I hope you'll enjoy using Gen Draw, and if you fork it and improve it, let me know! 🙋
