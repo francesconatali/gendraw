@@ -1,5 +1,5 @@
 # Gen Draw
-Developed within a single day in Vanilla JS, Gen Draw enables the creation of img2img (inpainting) images using the StableHorde API.
+Developed in one day in Vanilla JS, Gen Draw enables the creation of img2img (inpainting) images using the StableHorde API.
 
 StableHorde is a crowdsourced distributed server, allowing people to create images with Stable Diffusion, a powerful deep learning model.
 
