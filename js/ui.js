@@ -1,13 +1,13 @@
 // UI.js
 
 // Constants for DOM element IDs
-const ELEMENTS = {
-  submit: "submit",
-  reset: "reset",
-  textPrompt: "text-prompt",
-  canvas: "canvas",
-  statusMessage: "status-message",
-  generatedImage: "generated-image",
+const DOM = {
+  Submit: document.getElementById("submit"),
+  Reset: document.getElementById("reset"),
+  TextPrompt: document.getElementById("text-prompt"),
+  Canvas: document.getElementById("canvas"),
+  StatusMessage: document.getElementById("status-message"),
+  GeneratedImage: document.getElementById("generated-image"),
 };
 
 let requestId = null;
@@ -15,26 +15,22 @@ let blocked = false;
 let isCanvasDrawnOn = false;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const submitButton = document.getElementById(ELEMENTS.submit);
-  submitButton.addEventListener("click", handleSubmitClick);
-  const resetButton = document.getElementById(ELEMENTS.reset);
-  resetButton.addEventListener("click", resetCanvasAndPrompt);
+  DOM.Submit.addEventListener("click", handleSubmitClick);
+  DOM.Reset.addEventListener("click", resetCanvasAndPrompt);
 });
 
 function handleSubmitClick() {
-  const basePrompt = document.getElementById(ELEMENTS.textPrompt).value;
+  const basePrompt = DOM.TextPrompt.value;
 
   if (!isCanvasDrawnOn) {
-    // Display an error message if nothing has been drawn
     alert("Please draw something on the canvas before generating an image.");
-    return; // Exit the function early
+    return;
   }
   if (basePrompt === "") {
-    // Display an error message if the text prompt is empty
     alert("Please enter a text prompt before generating an image.");
-    return; // Exit the function early
+    return;
   }
-  // Extra prompts to improve the quality of the generated image
+
   const extraPrompts = [
     "(background:1.0)",
     "(realistic:1.0)",
@@ -46,22 +42,15 @@ function handleSubmitClick() {
     "(creative:1.0)",
   ];
 
-  // Convert the list of extra prompts into a string, each prefixed with ", "
   const extraPromptsString = extraPrompts.map((p) => `, ${p}`).join("");
-  // Append the negative prompts to the base prompt
   const prompt = `${basePrompt}${extraPromptsString}`;
-  // Convert the canvas to a base64 string and remove the data URL prefix
-  const image = document
-    .getElementById(ELEMENTS.canvas)
-    .toDataURL("image/png")
-    .replace(/^data:image\/(png|jpg);base64,/, "");
+  const image = DOM.Canvas.toDataURL("image/png").replace(
+    /^data:image\/(png|jpg);base64,/,
+    ""
+  );
 
-  // Disable submit button while the request is being processed
-  document.getElementById(ELEMENTS.submit).disabled = true;
-
-  // Update the status message
-  document.getElementById(ELEMENTS.statusMessage).innerHTML =
-    "Status: Submitting request...";
+  DOM.Submit.disabled = true;
+  DOM.StatusMessage.innerHTML = "Status: Submitting request...";
 
   blocked = false;
   submitRequest(prompt, image);
@@ -70,30 +59,22 @@ function handleSubmitClick() {
 function displayImage(imgData) {
   const img = new Image();
   img.src = imgData;
-  const generatedImageContainer = document.getElementById(
-    ELEMENTS.generatedImage
-  );
-  generatedImageContainer.innerHTML = ""; // Clear existing content
-  generatedImageContainer.style.display = "block"; // Show the generated image container
-  generatedImageContainer.appendChild(img);
-  // Renable the submit button
-  document.getElementById("submit").disabled = false;
+  DOM.GeneratedImage.innerHTML = "";
+  DOM.GeneratedImage.style.display = "block";
+  DOM.GeneratedImage.appendChild(img);
+
+  DOM.Submit.disabled = false;
 }
 
 function resetCanvasAndPrompt() {
-  const generatedImageContainer = document.getElementById(
-    ELEMENTS.generatedImage
-  );
-  generatedImageContainer.style.display = "none"; // Hide the generated image container
-  generatedImageContainer.innerHTML = ""; // Remove the previous image (if any)
-  document.getElementById(ELEMENTS.submit).textContent = "Generate Image"; // Change button text back to "Generate Image"
-  // Clear the canvas
-  const canvas = document.getElementById(ELEMENTS.canvas);
-  const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Reset prompt text field
-  document.getElementById(ELEMENTS.textPrompt).value = "";
-  // Reset the flag to false
+  DOM.GeneratedImage.style.display = "none";
+  DOM.GeneratedImage.innerHTML = "";
+  DOM.Submit.textContent = "Generate Image";
+
+  const ctx = DOM.Canvas.getContext("2d");
+  ctx.clearRect(0, 0, DOM.Canvas.width, DOM.Canvas.height);
+  DOM.TextPrompt.value = "";
+
   isCanvasDrawnOn = false;
 }
 
@@ -109,7 +90,7 @@ function updateStatusUI(data) {
     statusMessage += getStatusMessage(data);
   }
 
-  document.getElementById(ELEMENTS.statusMessage).innerHTML = statusMessage;
+  DOM.StatusMessage.innerHTML = statusMessage;
   setupCancelLink();
 }
 
@@ -119,18 +100,15 @@ function getStatusMessage(data) {
   if (data.faulted) return "An error occurred.";
   if (data.done && !data.finished) return "Processing cancelled.";
 
-  // Renable the submit button
-  document.getElementById(ELEMENTS.submit).disabled = false;
+  DOM.Submit.disabled = false;
 
   blocked = true;
   return "Undefined.";
 }
 
 function updateCancellationUI() {
-  document.getElementById(ELEMENTS.statusMessage).innerText =
-    "Status: Processing cancelled.";
-  // Renable the submit button
-  document.getElementById(ELEMENTS.submit).disabled = false;
+  DOM.StatusMessage.innerText = "Status: Processing cancelled.";
+  DOM.Submit.disabled = false;
   blocked = true;
 }
 
